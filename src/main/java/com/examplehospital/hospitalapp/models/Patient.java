@@ -1,18 +1,44 @@
 package com.examplehospital.hospitalapp.models;
 
+import com.examplehospital.hospitalapp.models.types.Usertype;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "patient")
 public class Patient {
 
+    @Id
+    @Column(name = "patient_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int patient_id;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private Usertype userType;
-    private String phoneNumber;
-    private List<Patient> patientList;
 
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "email", nullable = false, unique = true)
+    private String email;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "user_type", nullable = false)
+    private Usertype userType;
+
+    @Column(name = "phone_number", nullable = false)
+    private String phoneNumber;
+
+    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    private List<Appointment> appointments = new ArrayList<>();
+
+
+    public Patient() {
+    }
 
     public Patient(int patient_id, String firstName, String lastName, String email, String password, Usertype userType, String phoneNumber){
         this.patient_id = patient_id;
@@ -22,6 +48,7 @@ public class Patient {
         this.password = password;
         this.userType = userType;
         this.phoneNumber = phoneNumber;
+        this.appointments = new ArrayList<>();
     }
 
     public int getPatient_id() {
@@ -80,12 +107,12 @@ public class Patient {
         this.phoneNumber = phoneNumber;
     }
 
-    public List<Patient> getPatientList() {
-        return patientList;
+    public List<Appointment> getAppointments() {
+        return appointments;
     }
 
-    public void setPatientList(List<Patient> patientList) {
-        this.patientList = patientList;
+    public void setAppointments(List<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     @Override
@@ -98,7 +125,7 @@ public class Patient {
                 ", password='" + password + '\'' +
                 ", userType=" + userType +
                 ", phoneNumber='" + phoneNumber + '\'' +
-                ", patientList=" + patientList +
+                ", patientList=" + appointments +
                 '}';
     }
 }

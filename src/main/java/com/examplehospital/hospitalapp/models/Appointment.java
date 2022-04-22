@@ -1,22 +1,47 @@
 package com.examplehospital.hospitalapp.models;
 
+import com.examplehospital.hospitalapp.models.types.AppointmentStatus;
+
+import javax.persistence.*;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "appointments")
 public class Appointment {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "appointment_id")
     private int appointment_Id;
+
+    @Column(name = "doctor")
+    private int doctor;
+
+    @Column(name = "appointment_time")
     private Timestamp appointmentTime;
+
+    @Column(name = "hospital_name")
     private String hospitalName;
+
+    @Column(name = "hospital_address")
     private String hospitalAddress;
-    private AppointmentStatus reservationStatus;
+
+    @Column(name = "appointment_status")
+    private AppointmentStatus appointmentStatus;
+
+    @Column(name = "hospital_rating")
     private int hospitalRating;
 
-    public Appointment(int appointment_Id, Timestamp appointmentTime, String hospitalName, String hospitalAddress, AppointmentStatus reservationStatus, int hospitalRating) {
+    public Appointment() {
+    }
+
+    public Appointment(int appointment_Id, int doctor, Timestamp appointmentTime, String hospitalName, String hospitalAddress, AppointmentStatus appointmentStatus, int hospitalRating) {
         this.appointment_Id = appointment_Id;
+        this.doctor = doctor;
         this.appointmentTime = appointmentTime;
         this.hospitalName = hospitalName;
         this.hospitalAddress = hospitalAddress;
-        this.reservationStatus = reservationStatus;
+        this.appointmentStatus = appointmentStatus;
         this.hospitalRating = hospitalRating;
     }
 
@@ -52,12 +77,12 @@ public class Appointment {
         this.hospitalAddress = hospitalAddress;
     }
 
-    public AppointmentStatus getReservationStatus() {
-        return reservationStatus;
+    public AppointmentStatus getAppointmentStatus() {
+        return appointmentStatus;
     }
 
-    public void setReservationStatus(AppointmentStatus reservationStatus) {
-        this.reservationStatus = reservationStatus;
+    public void setAppointmentStatus(AppointmentStatus appointmentStatus) {
+        this.appointmentStatus = appointmentStatus;
     }
 
     public int getHospitalRating() {
@@ -75,7 +100,7 @@ public class Appointment {
                 ", appointmentTime=" + appointmentTime +
                 ", hospitalName='" + hospitalName + '\'' +
                 ", hospitalAddress='" + hospitalAddress + '\'' +
-                ", reservationStatus=" + reservationStatus +
+                ", reservationStatus=" + appointmentStatus +
                 ", hospitalRating=" + hospitalRating +
                 '}';
     }
