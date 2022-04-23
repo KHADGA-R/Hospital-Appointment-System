@@ -1,6 +1,6 @@
 package com.examplehospital.hospitalapp.models;
 
-import com.examplehospital.hospitalapp.models.types.AppointmentStatus;
+import com.examplehospital.hospitalapp.types.AppointmentStatus;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

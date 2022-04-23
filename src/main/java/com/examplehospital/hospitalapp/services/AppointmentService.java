@@ -1,17 +1,24 @@
-package com.examplehospital.hospitalapp.models.services;
+package com.examplehospital.hospitalapp.services;
 
 import com.examplehospital.hospitalapp.models.Appointment;
-import com.examplehospital.hospitalapp.models.types.AppointmentStatus;
+import com.examplehospital.hospitalapp.types.AppointmentStatus;
 import com.examplehospital.hospitalapp.repositories.AppointmentRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
+@Transactional
 public class AppointmentService {
 
+    @Autowired
     private AppointmentRepository appointmentRepository;
 
-    PatientService patientService;
+    @Autowired
+    private UserService userService;
 
     public AppointmentService(){
 

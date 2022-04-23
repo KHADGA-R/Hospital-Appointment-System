@@ -1,19 +1,19 @@
 package com.examplehospital.hospitalapp.models;
 
-import com.examplehospital.hospitalapp.models.types.Usertype;
+import com.examplehospital.hospitalapp.types.Usertype;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "patient")
-public class Patient {
+@Table(name = "users")
+public class User {
 
     @Id
-    @Column(name = "patient_id")
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    int patient_id;
+    int user_id;
 
     @Column(name = "first_name", nullable = false)
     private String firstName;
@@ -37,11 +37,11 @@ public class Patient {
     private List<Appointment> appointments = new ArrayList<>();
 
 
-    public Patient() {
+    public User() {
     }
 
-    public Patient(int patient_id, String firstName, String lastName, String email, String password, Usertype userType, String phoneNumber){
-        this.patient_id = patient_id;
+    public User(int user_id, String firstName, String lastName, String email, String password, Usertype userType, String phoneNumber){
+        this.user_id = user_id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -51,12 +51,12 @@ public class Patient {
         this.appointments = new ArrayList<>();
     }
 
-    public int getPatient_id() {
-        return patient_id;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setPatient_id(int patient_id) {
-        this.patient_id = patient_id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public String getFirstName() {
@@ -118,7 +118,7 @@ public class Patient {
     @Override
     public String toString() {
         return "Patient{" +
-                "patient_id=" + patient_id +
+                "patient_id=" + user_id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

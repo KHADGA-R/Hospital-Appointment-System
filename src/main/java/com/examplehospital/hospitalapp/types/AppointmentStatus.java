@@ -1,4 +1,4 @@
-package com.examplehospital.hospitalapp.models.types;
+package com.examplehospital.hospitalapp.types;
 
 public enum AppointmentStatus {
     PENDING,
