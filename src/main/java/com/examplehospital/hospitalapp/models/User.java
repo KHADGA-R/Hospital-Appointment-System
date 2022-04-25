@@ -33,7 +33,7 @@ public class User {
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
 
-    @OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL)
     private List<Appointment> appointments = new ArrayList<>();
 
 

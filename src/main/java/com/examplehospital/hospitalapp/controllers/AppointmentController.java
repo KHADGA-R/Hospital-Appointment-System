@@ -48,19 +48,19 @@ public class AppointmentController {
         return appointmentService.getServedAppointment();
     }
 
-    @GetMapping("/doctor/{user_id}")
-    public List<Appointment>getAppointmentsByDoctor(@PathVariable("user_id") int id){
-        return appointmentService.getAppointmentByDoctor(id);
+    @GetMapping("/patient/{user_id}")
+    public List<Appointment>getAppointmentsByPatient(@PathVariable("user_id") int id){
+        return appointmentService.getAppointmentByPatient(id);
     }
 
-    @GetMapping("/doctor/pending/{user_id}")
-    public List<Appointment>getAppointmentByDoctorAndPending(@PathVariable("user_id") int id){
-        return appointmentService.getAppointmentByDoctorAndPending(id);
+    @GetMapping("/patient/pending/{user_id}")
+    public List<Appointment>getAppointmentByPatientAndPending(@PathVariable("user_id") int id){
+        return appointmentService.getAppointmentByPatientAndPending(id);
     }
 
-    @GetMapping("/doctor/served/{user_id}")
-    public List<Appointment>getAppointmentByDoctorAndServed(@PathVariable("user_id") int id){
-        return appointmentService.getAppointmentByDoctorAndServed(id);
+    @GetMapping("/patient/served/{user_id}")
+    public List<Appointment>getAppointmentByPatientAndServed(@PathVariable("user_id") int id){
+        return appointmentService.getAppointmentByPatientAndServed(id);
     }
 
     @PutMapping("/approve/{id}")

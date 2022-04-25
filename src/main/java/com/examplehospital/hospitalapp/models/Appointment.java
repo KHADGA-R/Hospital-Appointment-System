@@ -14,8 +14,8 @@ public class Appointment {
     @Column(name = "appointment_id")
     private int appointment_Id;
 
-    @Column(name = "doctor")
-    private int doctor;
+    @Column(name = "patient")
+    private int patient;
 
     @Column(name = "appointment_time")
     private Timestamp appointmentTime;
@@ -35,9 +35,9 @@ public class Appointment {
     public Appointment() {
     }
 
-    public Appointment(int appointment_Id, int doctor, Timestamp appointmentTime, String hospitalName, String hospitalAddress, AppointmentStatus appointmentStatus, int hospitalRating) {
+    public Appointment(int appointment_Id, int patient, Timestamp appointmentTime, String hospitalName, String hospitalAddress, AppointmentStatus appointmentStatus, int hospitalRating) {
         this.appointment_Id = appointment_Id;
-        this.doctor = doctor;
+        this.patient = patient;
         this.appointmentTime = appointmentTime;
         this.hospitalName = hospitalName;
         this.hospitalAddress = hospitalAddress;
@@ -45,12 +45,21 @@ public class Appointment {
         this.hospitalRating = hospitalRating;
     }
 
+
     public int getAppointment_Id() {
         return appointment_Id;
     }
 
     public void setAppointment_Id(int appointment_Id) {
         this.appointment_Id = appointment_Id;
+    }
+
+    public int getPatient() {
+        return patient;
+    }
+
+    public void setPatient(int patient) {
+        this.patient = patient;
     }
 
     public Timestamp getAppointmentTime() {
@@ -97,10 +106,11 @@ public class Appointment {
     public String toString() {
         return "Appointment{" +
                 "appointment_Id=" + appointment_Id +
+                ", patient=" + patient +
                 ", appointmentTime=" + appointmentTime +
                 ", hospitalName='" + hospitalName + '\'' +
                 ", hospitalAddress='" + hospitalAddress + '\'' +
-                ", reservationStatus=" + appointmentStatus +
+                ", appointmentStatus=" + appointmentStatus +
                 ", hospitalRating=" + hospitalRating +
                 '}';
     }

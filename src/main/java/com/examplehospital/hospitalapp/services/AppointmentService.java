@@ -42,13 +42,13 @@ public class AppointmentService {
     public List<Appointment>getServedAppointment(){return  filterAppointment(appointmentRepository.findAll(), AppointmentStatus.SERVED);
     }
 
-    public List<Appointment>getAppointmentByDoctor(int id){ return appointmentRepository.getAppointmentsByDoctor(id);
+    public List<Appointment>getAppointmentByPatient(int id){ return appointmentRepository.getAppointmentsByPatient(id);
     }
 
-    public List<Appointment>getAppointmentByDoctorAndPending(int id){ return filterAppointment(appointmentRepository.getAppointmentsByDoctor(id), AppointmentStatus.PENDING);
+    public List<Appointment>getAppointmentByPatientAndPending(int id){ return filterAppointment(appointmentRepository.getAppointmentsByPatient(id), AppointmentStatus.PENDING);
     }
 
-    public List<Appointment>getAppointmentByDoctorAndServed(int id){ return filterAppointment(appointmentRepository.getAppointmentsByDoctor(id), AppointmentStatus.SERVED);
+    public List<Appointment>getAppointmentByPatientAndServed(int id){ return filterAppointment(appointmentRepository.getAppointmentsByPatient(id), AppointmentStatus.SERVED);
     }
 
     public Appointment getAppointmentById(int id){
